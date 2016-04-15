@@ -33,10 +33,12 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
+      #   @study.sites << @site
          @site.studies << @study
         format.html { redirect_to @site, notice: 'Site was successfully created.' }
         format.json { render :show, status: :created, location: @site }
       else
+        set_study
         format.html { render :new }
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
@@ -54,6 +56,7 @@ class SitesController < ApplicationController
         format.html { redirect_to @site, notice: 'Site was successfully updated.' }
         format.json { render :show, status: :ok, location: @site }
       else
+        set_study
         format.html { render :edit }
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
@@ -75,6 +78,11 @@ class SitesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_site
       @site = Site.find(params[:id])
+    end
+
+    def set_study
+      @studies = Study.all
+      @selectedstudy= Study.joins(:studysites).where(:"studysites.site_id"=> params[:id]).pluck(:title)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

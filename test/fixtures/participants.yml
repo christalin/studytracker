@@ -3,11 +3,11 @@
 one:
   partname: MyString
   gender: MyString
-  dob: MyString
+  dob: 2016-04-15
   address: MyString
 
 two:
   partname: MyString
   gender: MyString
-  dob: MyString
+  dob: 2016-04-15
   address: MyString

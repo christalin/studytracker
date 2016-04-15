@@ -17,6 +17,8 @@ class StudiesController < ApplicationController
   def new
     @study = Study.new
     @sites = Site.all
+  #      @selectedsite= Site.joins(:studysites).where(:"studysites.study_id"=> params[:id]).pluck(:name)
+
   #  @study.sites << @site
   end
 
@@ -25,7 +27,6 @@ class StudiesController < ApplicationController
     @sites = Site.all
     #@selectedsite= Site.joins(:studysites).where("studysites.study_id=",params[:id])
     @selectedsite= Site.joins(:studysites).where(:"studysites.study_id"=> params[:id]).pluck(:name)
-  
   end
 
   # POST /studies
@@ -33,19 +34,21 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(study_params)
     @site = Site.where(:name => params[:studysite])
-
-
     respond_to do |format|
       if @study.save
+        flash[:notice] =  'Article was successfully created.'
         @study.sites << @site
         format.html { redirect_to @study, notice: 'Study was successfully created.' }
         format.json { render :show, status: :created, location: @study }
       else
+        set_site
         format.html { render :new }
         format.json { render json: @study.errors, status: :unprocessable_entity }
       end
     end
   end
+
+  
 
   # PATCH/PUT /studies/1
   # PATCH/PUT /studies/1.json
@@ -58,6 +61,7 @@ class StudiesController < ApplicationController
         format.html { redirect_to @study, notice: 'Study was successfully updated.' }
         format.json { render :show, status: :ok, location: @study }
       else
+        update
         format.html { render :edit }
         format.json { render json: @study.errors, status: :unprocessable_entity }
       end
@@ -80,6 +84,11 @@ class StudiesController < ApplicationController
     def set_study
       @study = Study.find(params[:id])
     end
+
+    def set_site
+      @sites = Site.all
+      @selectedsite= Site.joins(:studysites).where(:"studysites.study_id"=> params[:id]).pluck(:name)
+    end  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def study_params

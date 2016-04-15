@@ -1,0 +1,24 @@
+<div class="responstable">
+<table class="table table-striped table-bordered">    
+  <thead>
+    <tr>
+      <th>PARTICIPANT NAME</th>
+      <th>GENDER</th>
+      <th>DOB</th>
+      <th>ADDRESS</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participants.each do |participant| %>
+      <tr>
+        <td><%= participant.partname %></td>
+        <td><%= participant.gender %></td>
+        <td><%= participant.dob %></td>
+        <td><%= participant.address %></td>
+        <td><%= link_to "edit", edit_participant_path(participant) %></td>
+        <td><%= link_to "x", participant_path(participant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

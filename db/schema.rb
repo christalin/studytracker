@@ -11,15 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415025102) do
+ActiveRecord::Schema.define(version: 20160415194620) do
+
+  create_table "events_organizers", force: :cascade do |t|
+  end
 
   create_table "participants", force: :cascade do |t|
     t.string   "partname"
     t.string   "gender"
-    t.string   "dob"
+    t.date     "dob"
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "participantstudies", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "study_id"
+    t.integer  "participant_id"
+  end
+
+  create_table "participantstudysites", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "participant_id"
+    t.integer  "studysite_id"
   end
 
   create_table "sites", force: :cascade do |t|

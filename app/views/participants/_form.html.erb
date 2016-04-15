@@ -1,14 +1,13 @@
-<%= simple_form_for(@participant) do |f| %>
+<%= simple_form_for(@participant, html: {class: "form-signin"}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :partname %>
-    <%= f.input :gender %>
-    <%= f.input :dob %>
-    <%= f.input :address %>
-  </div>
+  <%= f.input :partname, required: true, label: false, placeholder: " Participant Name", input_html: {class: "form-control"} %>
+  <%= f.input :gender, required: true, label: false, placeholder: "Gender", input_html: {class: "form-control"} %>
+  <%= f.date_select :dob, required: true, label: false, placeholder: "DOB", input_html: {class: "form-control datepicker"} %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.input :address, required: true, label: false, placeholder: "Address", input_html: {class: "form-control"} %>
+
+  <%= f.submit "Save", class: "btn btn-primary btn-block" %>
+  
 <% end %>
+

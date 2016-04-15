@@ -11,7 +11,20 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+var ready;
+
+ready = function() {
+  $(".datepicker").datepicker();
+  
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready); 
+
+

@@ -7,5 +7,6 @@ class CreateStudies < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :studies, [:title, :principal_investigator], :unique => true
   end
 end

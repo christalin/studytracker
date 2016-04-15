@@ -9,7 +9,7 @@
     <%= select_tag 'studysite[]', options_from_collection_for_select(@studies,"title", "principal_investigator",{:selected=>@selectedstudy}),:class => 'form-control', :multiple => true %>
 
  </div>
- <%= debug @selectedstudy %>
+ <!--<%= debug @selectedstudy %>-->
   
   <%= f.submit "Save", class: "btn btn-primary btn-block" %>
   
