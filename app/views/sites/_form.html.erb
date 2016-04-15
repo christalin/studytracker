@@ -1,0 +1,16 @@
+<%= simple_form_for(@site, html: {class: "form-signin"}) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name, required: true, label: false, placeholder: "Name", input_html: {class: "form-control"} %>
+  <%= f.input :location, required: true, label: false, placeholder: "Location", input_html: {class: "form-control"} %>
+
+  <div class="field">
+  
+    <%= select_tag 'studysite[]', options_from_collection_for_select(@studies,"title", "principal_investigator",{:selected=>@selectedstudy}),:class => 'form-control', :multiple => true %>
+
+ </div>
+ <%= debug @selectedstudy %>
+  
+  <%= f.submit "Save", class: "btn btn-primary btn-block" %>
+  
+<% end %>
