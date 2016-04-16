@@ -7,7 +7,6 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :address
 
       t.timestamps null: false
-    drop table :participants  
     end
   end
 end
