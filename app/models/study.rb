@@ -2,8 +2,8 @@ class Study < ActiveRecord::Base
 	has_many :studysites
 	has_many :sites, through: :studysites 
 
-	has_many :participantstudies
-	has_many :participants, through: :participantstudies 
+	#has_many :participantstudies
+	#has_many :participants, through: :participantstudies 
 
 	#validates :principal_investigator, uniqueness: true
 	#validates_uniqueness_of :title, scope: :principal_investigator, allow_nil: true

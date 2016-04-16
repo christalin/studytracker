@@ -13,6 +13,6 @@
  *= require_tree .
  *= require_self
  */
-input {
+input, select, option {
     text-transform:uppercase;
 }

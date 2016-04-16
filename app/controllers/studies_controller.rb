@@ -17,15 +17,11 @@ class StudiesController < ApplicationController
   def new
     @study = Study.new
     @sites = Site.all
-  #      @selectedsite= Site.joins(:studysites).where(:"studysites.study_id"=> params[:id]).pluck(:name)
-
-  #  @study.sites << @site
   end
 
   # GET /studies/1/edit
   def edit
     @sites = Site.all
-    #@selectedsite= Site.joins(:studysites).where("studysites.study_id=",params[:id])
     @selectedsite= Site.joins(:studysites).where(:"studysites.study_id"=> params[:id]).pluck(:name)
   end
 
@@ -36,7 +32,6 @@ class StudiesController < ApplicationController
     @site = Site.where(:name => params[:studysite])
     respond_to do |format|
       if @study.save
-        flash[:notice] =  'Article was successfully created.'
         @study.sites << @site
         format.html { redirect_to @study, notice: 'Study was successfully created.' }
         format.json { render :show, status: :created, location: @study }
