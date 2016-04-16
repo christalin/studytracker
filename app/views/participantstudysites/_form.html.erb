@@ -1,0 +1,15 @@
+<%= simple_form_for(@participantstudysite, html: {class: "form-signin"}) do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="field">
+  	SELECT STUDY - SITE
+  	</div>
+  	 <div class="field">
+    <%= select_tag 'sitestudy', options_from_collection_for_select(@allstudy, "key", "text"),:class => 'form-control' %>
+  </div>
+
+  
+  <%= f.submit "Save", class: "btn btn-primary btn-block" %>
+  
+<% end %>
+

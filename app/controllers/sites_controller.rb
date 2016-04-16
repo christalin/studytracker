@@ -33,14 +33,13 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
-      #   @study.sites << @site
          @site.studies << @study
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
-        format.json { render :show, status: :created, location: @site }
+         format.html { redirect_to @site, notice: 'Site was successfully created.' }
+         format.json { render :show, status: :created, location: @site }
       else
-        set_study
-        format.html { render :new }
-        format.json { render json: @site.errors, status: :unprocessable_entity }
+         set_study
+         format.html { render :new }
+         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
   end

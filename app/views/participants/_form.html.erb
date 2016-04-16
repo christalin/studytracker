@@ -1,26 +1,7 @@
 <%= simple_form_for(@participant, html: {class: "form-signin"}) do |f| %>
   <%= f.error_notification %>
   
-  <div class="field">
-  	SELECT STUDY - SITE
-  	</div>
-  	 <div class="field">
-    <%= select_tag 'sitestudy', options_from_collection_for_select(@allstudy, "key", "text"),:class => 'form-control' %>
-  </div>
-
-  <!--<div class="field">
-  	STUDY
-  	</div>
-  <div class="field">
-    <%= select_tag 'study', options_from_collection_for_select(@studies,"id", "principal_investigator"),:class => 'form-control' %>
-  </div>
-<div class="field">
-  	SITE
-  	</div>
-  <div class="field">
-    <%= select_tag 'site', options_from_collection_for_select(@sites, "id", "location"),:class => 'form-control' %>
-  </div> -->
-
+ 
   <%= f.input :partname, required: true, label: false, placeholder: " Participant Name", input_html: {class: "form-control"} %>
   <%= f.input :gender, required: true, label: false, placeholder: "Gender", input_html: {class: "form-control"} %>
   <%= f.date_select :dob, required: true, label: false, placeholder: "DOB", input_html: {class: "form-control datepicker"} %>

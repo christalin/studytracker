@@ -4,5 +4,5 @@ class Participant < ActiveRecord::Base
 	has_many :studysites, through: :participantstudysites
 
 	validates :partname, uniqueness: {message: 'The participant is already enrolled for this study.', case_sensitive: false, scope: [:dob ,:gender]}
-	validates :partname, presence: true  
+	validates :partname, :dob, :gender, presence: true  
 end

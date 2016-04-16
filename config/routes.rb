@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :enrollments, :path => 'enrollments'
   resources :participants
   resources :sites
   resources :studies
+  resources :participantstudysites,:path => 'enrollments'
   root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

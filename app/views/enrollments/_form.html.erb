@@ -1,0 +1,23 @@
+<%= simple_form_for(@enrollment, html: {class: "form-signin"}) do |f| %>
+  <%= f.error_notification %>
+<div class="field">
+    SELECT STUDY - SITE
+    </div>
+     <div class="field">
+    <%= select_tag 'studysite_id', options_from_collection_for_select(@allstudy, "key", "text"),:class => 'form-control' %>
+  </div>
+
+  <div class="field">
+    SELECT PARTICIPANT
+    </div>
+
+  <div class="field">
+  
+    <%= select_tag 'participant_id', options_from_collection_for_select(@participants, "id", "partname"),:class => 'form-control' %>
+
+ </div>
+
+<%= f.submit "Save", class: "btn btn-primary btn-block" %>
+
+
+<% end %>
