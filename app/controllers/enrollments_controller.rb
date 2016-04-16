@@ -19,7 +19,7 @@ class EnrollmentsController < ApplicationController
   def new
     @enrollment = Participantstudysite.new
     @participants = Participant.all
-    @allstudy= Studysite.select("sites.name||'('||sites.location||')-'||studies.title||'('||studies.principal_investigator||')' as text,studysites.id as key").where("studies.status = true").joins(:site,:study)
+    @allstudy= Studysite.select("sites.name||'('||sites.location||')-'||studies.title||'('||studies.principal_investigator||')' as text,studysites.id as key").joins(:site,:study)
   end
 
   # GET /enrollments/1/edit
