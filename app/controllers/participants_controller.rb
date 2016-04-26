@@ -66,12 +66,6 @@ class ParticipantsController < ApplicationController
       @participant = Participant.find(params[:id])
     end
 
-    def set_studysite
-      @sites = Site.joins(:studysites)
-      @studies = Study.joins(:studysites)
-      @allstudy= Studysite.select("sites.name||' - '||sites.location||'-'||studies.title||'-'||studies.principal_investigator as text,studysites.id as key").joins(:site,:study)
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def participant_params
       params.require(:participant).permit(:id, :partname, :gender, :dob, :address)

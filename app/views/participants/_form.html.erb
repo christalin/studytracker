@@ -3,13 +3,17 @@
   
  
   <%= f.input :partname, required: true, label: false, placeholder: " Participant Name", input_html: {class: "form-control"} %>
-  <%= f.input :gender, required: true, label: false, placeholder: "Gender", input_html: {class: "form-control"} %>
-  <%= f.date_select :dob, required: true, label: false, placeholder: "DOB", input_html: {class: "form-control datepicker"} %>
+ 
+  <div class="field">    
+    <%= f.label :gender %></br>
+    <span class="option">Male<span><%= f.radio_button :gender, "M" %></br>
+    <span class="option">Female<span><%= f.radio_button :gender, "F" %></br>
+  </div>
+  <%= f.date_select :dob, { :start_year => 1920, :end_year => 2050 }, required: true, label: false, placeholder: "DOB", input_html: {class: "form-control datepicker"} %>
 
-  <%= f.input :address, required: true, label: false, placeholder: "Address", input_html: {class: "form-control"} %>
-
-
-  <!--<%= debug @allstudy %>-->
+  <%= f.text_area :address, required: true, label: false, placeholder: "Address", input_html: {class: "form-control", rows: 5} %>
+  
+    <!--<%= debug @allstudy %>-->
 
   <%= f.submit "Save", class: "btn btn-primary btn-block" %>
   

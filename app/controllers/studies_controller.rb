@@ -5,7 +5,7 @@ class StudiesController < ApplicationController
   # GET /studies.json
   def index
     @studies = Study.all
-    @sites = Site.all
+  #  @sites = Site.all
   end
 
   # GET /studies/1

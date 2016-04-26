@@ -4,5 +4,6 @@ class Site < ActiveRecord::Base
 
 	#validates_uniqueness_of :name, scope: :location, allow_nil: true
 	validates :name, uniqueness: {message: 'The site name and location already exists.', case_sensitive: false, scope: :location}
+	validates :name, :location, presence: true  
 	
 end
